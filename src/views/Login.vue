@@ -91,7 +91,7 @@ export default {
       this.loading = true;
       Api.post("/users/login-user", this.model)
         .then((res) => {
-          VueCookies.set("token", res.data.token, "1h");
+          VueCookies.set("token", res.data.token, "10h");
           VueCookies.set("refreshToken", res.data.refreshToken, "7 days");
           this.$router.push({ path: "/" });
 

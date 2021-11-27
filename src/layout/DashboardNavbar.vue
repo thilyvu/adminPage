@@ -9,18 +9,18 @@
       class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"
     >
       <div class="form-group mb-0">
-        <base-input
+        <!-- <base-input
           placeholder="Search"
           class="input-group-alternative"
           alternative=""
           addon-right-icon="fas fa-search"
         >
-        </base-input>
+        </base-input> -->
       </div>
     </form>
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item dropdown">
-        <base-dropdown class="nav-link pr-0">
+        <base-dropdown class="nav-link pr-0" style="margin-left: -50px">
           <template v-slot:title>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">

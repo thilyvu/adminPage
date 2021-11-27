@@ -7,7 +7,15 @@ import Dashboard from "../views/Dashboard.vue";
 import Icons from "../views/Icons.vue";
 // import Maps from "../views/Maps.vue";
 import Profile from "../views/UserProfile.vue";
-import Tables from "../views/Tables.vue";
+import Classes from "../views/Classes.vue";
+import Calendar from "../views/Calendar.vue";
+import Comment from "../views/Comment.vue";
+import Exercise from "../views/Exercise.vue";
+import FileFolder from "../views/FileFolder.vue";
+import Lecture from "../views/Lecture.vue";
+import NewFeed from "../views/NewFeed.vue";
+import Score from "../views/Score.vue";
+import User from "../views/User.vue";
 
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
@@ -39,9 +47,49 @@ const routes = [
         components: { default: Profile },
       },
       {
-        path: "/tables",
-        name: "tables",
-        components: { default: Tables },
+        path: "/classes",
+        name: "classes",
+        components: { default: Classes },
+      },
+      {
+        path: "/Calendars",
+        name: "Calendars",
+        components: { default: Calendar },
+      },
+      {
+        path: "/Comments",
+        name: "Comments",
+        components: { default: Comment },
+      },
+      {
+        path: "/Exercises",
+        name: "Exercises",
+        components: { default: Exercise },
+      },
+      {
+        path: "/FileManagement",
+        name: "FileManagement",
+        components: { default: FileFolder },
+      },
+      {
+        path: "/Lectures",
+        name: "Lectures",
+        components: { default: Lecture },
+      },
+      {
+        path: "/NewFeeds",
+        name: "NewFeeds",
+        components: { default: NewFeed },
+      },
+      {
+        path: "/Scores",
+        name: "Scores",
+        components: { default: Score },
+      },
+      {
+        path: "/Users",
+        name: "Users",
+        components: { default: User },
       },
     ],
   },

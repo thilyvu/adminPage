@@ -14,13 +14,13 @@
           }"
         />
 
-        <sidebar-item
+        <!-- <sidebar-item
           :link="{
             name: 'Icons',
             icon: 'ni ni-planet text-blue',
             path: '/icons',
           }"
-        />
+        /> -->
         <!-- <sidebar-item
           :link="{
             name: 'Maps',
@@ -37,9 +37,65 @@
         /> -->
         <sidebar-item
           :link="{
-            name: 'Tables',
-            icon: 'ni ni-bullet-list-67 text-red',
-            path: '/tables',
+            name: 'Classes',
+            icon: 'ni ni-hat-3 text-black',
+            path: '/classes',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'File Management',
+            icon: 'ni ni-folder-17 text-yellow',
+            path: '/fileManagement',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'Scores',
+            icon: 'ni ni-map-big text-blue',
+            path: '/Scores',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'Exercises',
+            icon: 'ni ni-single-copy-04 text-red',
+            path: '/Exercises',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'Users',
+            icon: 'ni ni-circle-08 text-green',
+            path: '/Users',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'Lectures',
+            icon: 'ni ni-tablet-button text-purple',
+            path: '/Lectures',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'New Feeds',
+            icon: 'ni ni-paper-diploma text-teal',
+            path: '/NewFeeds',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'Comments',
+            icon: 'ni ni-ungroup text-orange',
+            path: '/Comments',
+          }"
+        />
+        <sidebar-item
+          :link="{
+            name: 'Calendars',
+            icon: 'ni ni-album-2 text-charcoal',
+            path: '/Calendars',
           }"
         />
         <!-- <sidebar-item
