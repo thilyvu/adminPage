@@ -1,6 +1,11 @@
 <template>
   <nav
-    class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white"
+    class="
+      navbar navbar-vertical
+      fixed-left
+      navbar-expand-md navbar-light
+      bg-white
+    "
     id="sidenav-main"
   >
     <div class="container-fluid">
@@ -38,10 +43,7 @@
               <a class="nav-link" href="#" role="button">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img
-                      alt="Image placeholder"
-                      src="img/theme/team-1-800x800.jpg"
-                    />
+                    <img alt="Image placeholder" :src="this.model.avatar" />
                   </span>
                 </div>
               </a>
@@ -67,7 +69,7 @@
               <span>Support</span>
             </router-link> -->
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
+            <a @click="handleLogout" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
@@ -135,7 +137,8 @@
 </template>
 <script>
 import NavbarToggleButton from "@/components/NavbarToggleButton";
-
+import Api from "../../models/api";
+import { ElMessageBox } from "element-plus";
 export default {
   name: "sidebar",
   components: {
@@ -144,7 +147,7 @@ export default {
   props: {
     logo: {
       type: String,
-      default: "img/brand/green.png",
+      default: "img/brand/logo.png",
       description: "Sidebar app logo",
     },
     autoClose: {
@@ -153,6 +156,45 @@ export default {
       description:
         "Whether sidebar should autoclose on mobile when clicking an item",
     },
+  },
+  data() {
+    return {
+      model: {
+        username: "",
+        email: "",
+        name: "",
+        province: "",
+        phone: "",
+        role: "",
+        school: "",
+        gender: "",
+        DOB: "",
+        avatar: "",
+      },
+    };
+  },
+  mounted() {
+    Api.get("/users/profile", this.model)
+      .then((res) => {
+        this.model.username = res.data.username;
+        this.model.email = res.data.email;
+        this.model.school = res.data.school;
+        this.model.name = res.data.name;
+        this.model.phone = res.data.phone;
+        this.model.province = res.data.province;
+        this.model.role = res.data.role;
+        this.model.gender = res.data.gender;
+        this.model.DOB = res.data.dob;
+        this.model.avatar = res.data.avatar;
+        this.id = res.data.id;
+      })
+      .catch((err) => {
+        this.$notify({
+          type: "warning",
+          title: "error",
+          message: err.toString(),
+        });
+      });
   },
   provide() {
     return {
@@ -165,6 +207,20 @@ export default {
     },
     showSidebar() {
       this.$sidebar.displaySidebar(true);
+    },
+    handleLogout() {
+      ElMessageBox.confirm("Are you sure to logout?")
+        .then(() => {
+          this.$router.push({ path: "/login" });
+        })
+        .catch(() => {
+          // this.$notify({
+          //   type: "warning",
+          //   title: "error",
+          //   message: err.toString(),
+          // });
+          this.$sidebar.displaySidebar(false);
+        });
     },
   },
   beforeUnmount() {

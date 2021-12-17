@@ -177,7 +177,7 @@ export default {
       province: [],
       subject: [],
       grade: [],
-      newFeedId: "",
+      commentId: "",
       keyword: "",
       sizeForm: {
         id: "",
@@ -326,7 +326,7 @@ export default {
     },
     handleEdit(index, row) {
       this.dialogVisible = true;
-      this.newFeedId = row._id;
+      this.commentId = row._id;
       this.sizeForm = {
         content: row.content,
         createAvatar: row.createAvatar,
@@ -334,11 +334,11 @@ export default {
       };
     },
     handleDelete(index, row) {
-      this.newFeedId = row._id;
+      this.commentId = row._id;
       ElMessageBox.confirm("Are you sure to delete this comment?")
         .then(() => {
           this.loading_delete_btn;
-          Api.delete(`/comment/${this.newFeedId}`)
+          Api.delete(`/comment/${this.commentId}`)
             .then(() => {
               this.$notify({
                 type: "success",
@@ -368,7 +368,7 @@ export default {
     },
     onSubmit() {
       this.loading_save_btn = true;
-      Api.put(`/comment/${this.newFeedId}`, {
+      Api.put(`/comment/${this.commentId}`, {
         content: this.sizeForm.content,
         image: this.sizeForm.image,
       })

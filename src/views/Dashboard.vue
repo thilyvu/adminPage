@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xl-3 col-lg-6">
           <stats-card
-            title="Total traffic"
+            title="Total Classes"
             type="gradient-red"
             sub-title="350,897"
             icon="ni ni-active-40"
@@ -20,7 +20,7 @@
         </div>
         <div class="col-xl-3 col-lg-6">
           <stats-card
-            title="Total traffic"
+            title="Total students"
             type="gradient-orange"
             sub-title="2,356"
             icon="ni ni-chart-pie-35"
@@ -36,7 +36,7 @@
         </div>
         <div class="col-xl-3 col-lg-6">
           <stats-card
-            title="Sales"
+            title="Total lectures"
             type="gradient-green"
             sub-title="924"
             icon="ni ni-money-coins"
@@ -52,7 +52,7 @@
         </div>
         <div class="col-xl-3 col-lg-6">
           <stats-card
-            title="Performance"
+            title="Total exercises"
             type="gradient-info"
             sub-title="49,65%"
             icon="ni ni-chart-bar-32"
@@ -122,7 +122,7 @@
                   <h6 class="text-uppercase text-muted ls-1 mb-1">
                     Performance
                   </h6>
-                  <h5 class="h3 mb-0">Total orders</h5>
+                  <h5 class="h3 mb-0">Total classes</h5>
                 </div>
               </div>
             </template>
@@ -182,7 +182,20 @@ export default {
         {
           type: "line",
           data: {
-            labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
             datasets: [
               {
                 label: "Performance",

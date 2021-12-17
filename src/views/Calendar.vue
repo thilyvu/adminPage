@@ -1,42 +1,21 @@
 <template>
   <div>
     <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
-      <!-- Card stats -->
       <div class="row">
-        <div class="col-xl-3 col-lg-6">
-          <stats-card
-            title="Total traffic"
-            type="gradient-red"
-            sub-title="350,897"
-            icon="ni ni-active-40"
-            class="mb-4 mb-xl-0"
-          >
-            <template v-slot:footer>
-              <span class="text-success mr-2"
-                ><i class="fa fa-arrow-up"></i> 3.48%</span
-              >
-              <span class="text-nowrap">Since last month</span>
-            </template>
-          </stats-card>
+        <div class="col-xl-4 col-lg-6">
+          <!-- <div class="form-group mb-0">
+            <base-input
+              placeholder="Search"
+              class="input-group-alternative"
+              alternative=""
+              addon-right-icon="fas fa-search"
+            >
+            </base-input>
+          </div> -->
         </div>
+
         <div class="col-xl-3 col-lg-6">
-          <stats-card
-            title="Total traffic"
-            type="gradient-orange"
-            sub-title="2,356"
-            icon="ni ni-chart-pie-35"
-            class="mb-4 mb-xl-0"
-          >
-            <template v-slot:footer>
-              <span class="text-success mr-2"
-                ><i class="fa fa-arrow-up"></i> 12.18%</span
-              >
-              <span class="text-nowrap">Since last month</span>
-            </template>
-          </stats-card>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <stats-card
+          <!-- <stats-card
             title="Sales"
             type="gradient-green"
             sub-title="924"
@@ -49,23 +28,17 @@
               >
               <span class="text-nowrap">Since last month</span>
             </template>
-          </stats-card>
+          </stats-card> -->
         </div>
-        <div class="col-xl-3 col-lg-6">
-          <stats-card
-            title="Performance"
-            type="gradient-info"
-            sub-title="49,65%"
-            icon="ni ni-chart-bar-32"
-            class="mb-4 mb-xl-0"
-          >
-            <template v-slot:footer>
-              <span class="text-success mr-2"
-                ><i class="fa fa-arrow-up"></i> 54.8%</span
-              >
-              <span class="text-nowrap">Since last month</span>
-            </template>
-          </stats-card>
+        <div class="col-xl-4 col-lg-6">
+          <div class="form-group mb-0">
+            <el-input
+              placeholder="Search"
+              v-model="keyword"
+              @change="handleSearch"
+            >
+            </el-input>
+          </div>
         </div>
       </div>
     </base-header>
@@ -81,22 +54,9 @@
             style="width: 100%; padding: 1rem"
           >
             <el-table-column type="index" width="50"> </el-table-column>
-            <el-table-column prop="name" label="name"> </el-table-column>
-            <el-table-column prop="subject" label="Subject" width="180">
-            </el-table-column>
-            <el-table-column prop="classCode" label="classCode" width="180">
-            </el-table-column>
-            <el-table-column label="Banner Image">
-              <template #default="scope">
-                <el-image :src="scope.row.bannerImg"></el-image>
-              </template>
-            </el-table-column>
-            <!-- <el-table-column
-              style="overflow-wrap: break-word; max-width: 200px"
-              prop="description"
-              label="description"
-            >
-            </el-table-column> -->
+            <el-table-column prop="content" label="Content"> </el-table-column>
+            <el-table-column prop="content" label="Content"> </el-table-column>
+            <el-table-column prop="content" label="Content"> </el-table-column>
             <el-table-column align="center">
               <template #default="scope">
                 <el-button
@@ -126,72 +86,32 @@
       </div>
       <el-dialog
         v-model="dialogVisible"
-        title="Class detail "
+        title="Comment detail "
         width="30%"
         :before-close="handleClose"
       >
         <!-- <span>Class detail</span> -->
-        <el-form ref="form" :model="sizeForm" label-width="120px" size="mini">
-          <el-form-item label="Class Name">
-            <el-input v-model="sizeForm.name"></el-input>
+        <el-form ref="form" :model="sizeForm" label-width="130px" size="mini">
+          <el-form-item label="Comment content">
+            <el-input v-model="sizeForm.content"></el-input>
           </el-form-item>
-          <el-form-item label="Province">
-            <el-select
-              v-model="sizeForm.province"
-              placeholder="Select your province"
-            >
-              <el-option
-                v-for="item in province"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="Class code">
-            <el-input v-model="sizeForm.classCode"></el-input>
-          </el-form-item>
-          <el-form-item label="Description">
-            <el-input type="textarea" v-model="sizeForm.description"></el-input>
-          </el-form-item>
-          <el-form-item label="Class status">
-            <el-checkbox
-              v-model="sizeForm.isHide"
-              label="Hide status"
-            ></el-checkbox>
-            <el-checkbox
-              v-model="sizeForm.approveMode"
-              label="Approve mode"
-            ></el-checkbox>
-          </el-form-item>
-          <el-form-item label="Subject">
-            <el-select
-              v-model="sizeForm.subject"
-              placeholder="Select your subject"
-            >
-              <el-option
-                v-for="item in subject"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="Grade">
-            <el-select v-model="sizeForm.grade" placeholder="Select your grade">
-              <el-option
-                v-for="item in grade"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="Banner image">
-            <el-image :src="sizeForm.bannerImg"></el-image>
+          <el-form-item label="Creator">
+            <div style="display: flex">
+              <span class="avatar avatar-sm rounded-circle">
+                <img
+                  v-if="sizeForm.createAvatar"
+                  alt="Image placeholder"
+                  :src="sizeForm.createAvatar"
+                />
+              </span>
+              <div class="media-body ml-2 d-none d-lg-block">
+                <span
+                  v-if="sizeForm.createName"
+                  class="mb-0 text-sm font-weight-bold"
+                  >{{ sizeForm.createName }}</span
+                >
+              </div>
+            </div>
           </el-form-item>
           <el-form-item size="large">
             <el-button
@@ -241,24 +161,22 @@ export default {
       province: [],
       subject: [],
       grade: [],
-      classId: "",
+      calendarId: "",
+      keyword: "",
       sizeForm: {
         id: "",
         name: "",
-        province: "",
-        classCode: "",
+        classId: "",
+        color: "",
         description: "",
-        grade: "",
-        isHide: false,
-        approveMode: false,
-        subject: "",
-        bannerImg: "",
+        endTime: "",
+        startTime: "",
       },
     };
   },
   async mounted() {
     this.loading = true;
-    Api.get("/class", { params: { page: this.page, limit: 10 } })
+    Api.get("/comment", { params: { page: this.page, limit: 10 } })
       .then((res) => {
         this.tableData = res.data.data;
         this.loading = false;
@@ -329,7 +247,47 @@ export default {
     setPage(val) {
       this.page = val;
       this.loading = true;
-      Api.get("/class", { params: { page: this.page, limit: 10 } })
+      this.keyword !== ""
+        ? Api.get("/allCalendar", {
+            params: {
+              page: this.page,
+              limit: 10,
+              "name[regex]": this.keyword,
+            },
+          })
+            .then((res) => {
+              this.tableData = res.data.data;
+              this.loading = false;
+              this.total = res.data.total;
+            })
+            .catch((err) => {
+              this.loading = false;
+              this.$notify({
+                type: "warning",
+                title: "error",
+                message: err.toString(),
+              });
+            })
+        : Api.get("/allCalendar", { params: { page: this.page, limit: 10 } })
+            .then((res) => {
+              this.tableData = res.data.data;
+              this.loading = false;
+              this.total = res.data.total;
+            })
+            .catch((err) => {
+              this.loading = false;
+              this.$notify({
+                type: "warning",
+                title: "error",
+                message: err.toString(),
+              });
+            });
+    },
+    handleSearch(val) {
+      this.loading = true;
+      Api.get("/allCalendar", {
+        params: { page: this.page, limit: 10, "content[regex]": val },
+      })
         .then((res) => {
           this.tableData = res.data.data;
           this.loading = false;
@@ -343,33 +301,28 @@ export default {
             message: err.toString(),
           });
         });
+      this.dialogVisible = false;
     },
     handleEdit(index, row) {
       this.dialogVisible = true;
-      this.classId = row._id;
+      this.calendarId = row._id;
       this.sizeForm = {
-        name: row.name,
-        province: row.province,
-        classCode: row.classCode,
-        description: row.description,
-        grade: row.grade,
-        isHide: row.isHide,
-        subject: row.subject,
-        bannerImg: row.bannerImg,
-        approveMode: row.approveMode,
+        content: row.content,
+        createAvatar: row.createAvatar,
+        createName: row.createName,
       };
     },
     handleDelete(index, row) {
-      this.classId = row._id;
-      ElMessageBox.confirm("Are you sure to delete this class?")
+      this.calendarId = row._id;
+      ElMessageBox.confirm("Are you sure to delete this calendar?")
         .then(() => {
           this.loading_delete_btn;
-          Api.delete(`/class/${this.classId}`)
+          Api.delete(`/calendar/${this.calendarId}`)
             .then(() => {
               this.$notify({
                 type: "success",
-                title: "Delete class",
-                message: "Delete class successful",
+                title: "Delete calendar",
+                message: "Delete calendar successful",
               });
               this.loading_delete_btn = false;
               this.handleClose();
@@ -394,22 +347,15 @@ export default {
     },
     onSubmit() {
       this.loading_save_btn = true;
-      Api.put(`/class/${this.classId}`, {
-        name: this.sizeForm.name,
-        province: this.sizeForm.province,
-        classCode: this.sizeForm.classCode,
-        description: this.sizeForm.description,
-        grade: this.sizeForm.grade,
-        isHide: this.sizeForm.isHide,
-        subject: this.sizeForm.subject,
-        bannerImg: this.sizeForm.bannerImg,
-        approveMode: this.sizeForm.approveMode,
+      Api.put(`/calendar/${this.calendarId}`, {
+        content: this.sizeForm.content,
+        image: this.sizeForm.image,
       })
         .then(() => {
           this.$notify({
             type: "success",
-            title: "Update class",
-            message: "Update class successful",
+            title: "Update calendar",
+            message: "Update calendar successful",
           });
           this.loading_save_btn = false;
           this.handleClose();
@@ -426,7 +372,7 @@ export default {
     },
     handleClose() {
       this.loading = true;
-      Api.get("/class", { params: { page: this.page, limit: 10 } })
+      Api.get("/allCalendar", { params: { page: this.page, limit: 10 } })
         .then((res) => {
           this.tableData = res.data.data;
           this.loading = false;
@@ -445,4 +391,12 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.el-input--mini .el-input__inner {
+  width: 200px;
+}
+
+.el-textarea__inner {
+  width: 200px !important;
+}
+</style>
