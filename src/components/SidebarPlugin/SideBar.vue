@@ -1,11 +1,6 @@
 <template>
   <nav
-    class="
-      navbar navbar-vertical
-      fixed-left
-      navbar-expand-md navbar-light
-      bg-white
-    "
+    class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white"
     id="sidenav-main"
   >
     <div class="container-fluid">
@@ -38,7 +33,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </base-dropdown>
-          <base-dropdown class="nav-item" position="right">
+          <base-dropdown class="nav-item" position="left">
             <template v-slot:title>
               <a class="nav-link" href="#" role="button">
                 <div class="media align-items-center">
@@ -138,6 +133,7 @@
 <script>
 import NavbarToggleButton from "@/components/NavbarToggleButton";
 import Api from "../../models/api";
+import VueCookies from "vue-cookies";
 import { ElMessageBox } from "element-plus";
 export default {
   name: "sidebar",
@@ -174,7 +170,7 @@ export default {
     };
   },
   mounted() {
-    Api.get("/users/profile", this.model)
+    Api.get("/profile", this.model)
       .then((res) => {
         this.model.username = res.data.username;
         this.model.email = res.data.email;
@@ -211,6 +207,8 @@ export default {
     handleLogout() {
       ElMessageBox.confirm("Are you sure to logout?")
         .then(() => {
+          VueCookies.remove("token");
+          VueCookies.remove("refreshToken");
           this.$router.push({ path: "/login" });
         })
         .catch(() => {

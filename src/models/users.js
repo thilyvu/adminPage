@@ -13,7 +13,7 @@ export default function useUser() {
   });
   const login = async (data) => {
     try {
-      const url = `${API_URL}/users/login-user`;
+      const url = `${API_URL}/login-user`;
       const createUserResponse = await fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -36,7 +36,7 @@ export default function useUser() {
   };
   const registerTeacher = async (data) => {
     try {
-      const url = `${API_URL}/users/register-teacher`;
+      const url = `${API_URL}/register-teacher`;
       const createUserResponse = await fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -57,7 +57,7 @@ export default function useUser() {
   };
   const registerStudent = async (data) => {
     try {
-      const url = `${API_URL}/users/register-user`;
+      const url = `${API_URL}/register-user`;
       const createUserResponse = await fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -78,7 +78,7 @@ export default function useUser() {
   };
   const registerAdmin = async (data) => {
     try {
-      const url = `${API_URL}/users/register-super-admin`;
+      const url = `${API_URL}/register-super-admin`;
       const createUserResponse = await fetch(url, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -99,7 +99,7 @@ export default function useUser() {
   };
   const getUserProfile = async () => {
     try {
-      const url = `${API_URL}/users/user-profile`;
+      const url = `${API_URL}/user-profile`;
       const createUserResponse = await fetch(url, {
         method: "get", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -121,7 +121,7 @@ export default function useUser() {
     try {
       const token = VueCookies.get("token");
       console.log(token);
-      const url = `${API_URL}/users/profile`;
+      const url = `${API_URL}/profile`;
       const createUserResponse = await fetch(url, {
         method: "get", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -141,7 +141,7 @@ export default function useUser() {
   };
   const getTeacherProfile = async () => {
     try {
-      const url = `${API_URL}/users/teacher-profile`;
+      const url = `${API_URL}/teacher-profile`;
       const createUserResponse = await fetch(url, {
         method: "get", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -161,7 +161,7 @@ export default function useUser() {
   };
   const getAdminProfile = async () => {
     try {
-      const url = `${API_URL}/users/super-admin-profile`;
+      const url = `${API_URL}/super-admin-profile`;
       const createUserResponse = await fetch(url, {
         method: "get", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -182,7 +182,7 @@ export default function useUser() {
 
   const logout = async () => {
     try {
-      const url = `${API_URL}/users/logout`;
+      const url = `${API_URL}/logout`;
       const createUserResponse = await fetch(url, {
         method: "get", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin

@@ -20,7 +20,7 @@
     </form>
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item dropdown">
-        <base-dropdown class="nav-link pr-0" style="margin-left: -50px">
+        <base-dropdown class="nav-link pr-0" style="margin-right: 5rem">
           <template v-slot:title>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
@@ -65,6 +65,7 @@
 <script>
 import Api from "../models/api";
 import { ElMessageBox } from "element-plus";
+import VueCookies from "vue-cookies";
 export default {
   data() {
     return {
@@ -78,7 +79,7 @@ export default {
     };
   },
   mounted() {
-    Api.get("/users/profile", this.model)
+    Api.get("/profile", this.model)
       .then((res) => {
         this.model.name = res.data.name;
         this.model.avatar = res.data.avatar;
@@ -104,6 +105,8 @@ export default {
     handleLogout() {
       ElMessageBox.confirm("Are you sure to logout?")
         .then(() => {
+          VueCookies.remove("token");
+          VueCookies.remove("refreshToken");
           this.$router.push({ path: "/login" });
         })
         .catch(() => {

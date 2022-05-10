@@ -61,7 +61,10 @@
             </el-table-column>
             <el-table-column label="Banner Image">
               <template #default="scope">
-                <el-image :src="scope.row.bannerImg"></el-image>
+                <el-image
+                  :src="scope.row.bannerImg"
+                  style="max-width: 200px; max-height: 200px"
+                ></el-image>
               </template>
             </el-table-column>
             <!-- <el-table-column
@@ -166,7 +169,10 @@
             </el-select>
           </el-form-item>
           <el-form-item label="Banner image">
-            <el-image :src="sizeForm.bannerImg"></el-image>
+            <el-image
+              :src="sizeForm.bannerImg"
+              style="max-width: 200px; max-height: 200px"
+            ></el-image>
           </el-form-item>
           <el-form-item size="large">
             <el-button

@@ -33,7 +33,7 @@ async function checkToken(instance) {
         );
         if (refreshToken) {
           axios
-            .post(`${API_URL}/users/refresh-token`, {
+            .post(`${API_URL}/refresh-token`, {
               refreshToken,
             })
             .then((response) =>

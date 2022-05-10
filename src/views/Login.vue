@@ -89,7 +89,7 @@ export default {
   methods: {
     async handleLogin() {
       this.loading = true;
-      Api.post("/users/login-user", this.model)
+      Api.post("/login-user", this.model)
         .then((res) => {
           VueCookies.set("token", res.data.token, "10h");
           VueCookies.set("refreshToken", res.data.refreshToken, "7 days");

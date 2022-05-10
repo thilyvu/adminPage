@@ -291,7 +291,7 @@ export default {
     };
   },
   mounted() {
-    Api.get("/users/profile", this.model)
+    Api.get("/profile", this.model)
       .then((res) => {
         this.model.username = res.data.username;
         this.model.email = res.data.email;

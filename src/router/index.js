@@ -18,6 +18,7 @@ import Score from "../views/Score.vue";
 import User from "../views/User.vue";
 
 import Login from "../views/Login.vue";
+import VueCookies from "vue-cookies";
 import Register from "../views/Register.vue";
 
 const routes = [
@@ -30,11 +31,25 @@ const routes = [
         path: "/dashboard",
         name: "dashboard",
         components: { default: Dashboard },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/icons",
         name: "icons",
         components: { default: Icons },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       // {
       //   path: "/maps",
@@ -45,51 +60,121 @@ const routes = [
         path: "/profile",
         name: "profile",
         components: { default: Profile },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/classes",
         name: "classes",
         components: { default: Classes },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/Calendars",
         name: "Calendars",
         components: { default: Calendar },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/Comments",
         name: "Comments",
         components: { default: Comment },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/Exercises",
         name: "Exercises",
         components: { default: Exercise },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/FileManagement",
         name: "FileManagement",
         components: { default: FileFolder },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/Lectures",
         name: "Lectures",
         components: { default: Lecture },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/NewFeeds",
         name: "NewFeeds",
         components: { default: NewFeed },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/Scores",
         name: "Scores",
         components: { default: Score },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
       {
         path: "/Users",
         name: "Users",
         components: { default: User },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
       },
     ],
   },

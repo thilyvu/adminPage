@@ -266,7 +266,7 @@ export default {
   },
   async mounted() {
     this.loading = true;
-    Api.get("/users/getListUsers", { params: { page: this.page, limit: 10 } })
+    Api.get("/getListUsers", { params: { page: this.page, limit: 10 } })
       .then((res) => {
         this.tableData = res.data.data;
         this.loading = false;
@@ -298,7 +298,7 @@ export default {
       this.page = val;
       this.loading = true;
       this.keyword !== ""
-        ? Api.get("/users/getListUsers", {
+        ? Api.get("/getListUsers", {
             params: { page: this.page, limit: 10, "name[regex]": val },
           })
             .then((res) => {
@@ -314,7 +314,7 @@ export default {
                 message: err.toString(),
               });
             })
-        : Api.get("/users/getListUsers", {
+        : Api.get("/getListUsers", {
             params: { page: this.page, limit: 10 },
           })
             .then((res) => {
@@ -440,7 +440,7 @@ export default {
     },
     handleClose() {
       this.loading = true;
-      Api.get("/users/getListUsers", { params: { page: this.page, limit: 10 } })
+      Api.get("/getListUsers", { params: { page: this.page, limit: 10 } })
         .then((res) => {
           this.tableData = res.data.data;
           this.loading = false;
@@ -466,7 +466,7 @@ export default {
     },
     handleSearch(val) {
       this.loading = true;
-      Api.get("/users/getListUsers", {
+      Api.get("/getListUsers", {
         params: { page: this.page, limit: 10, "name[regex]": val },
       })
         .then((res) => {
