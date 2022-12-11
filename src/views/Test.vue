@@ -318,7 +318,7 @@ export default {
       ElMessageBox.confirm("Are you sure to delete this exercise?")
         .then(() => {
           this.loading_delete_btn;
-          Api.delete(`/exercise/${this.exerciseId}`)
+          Api.delete(`/test/${this.exerciseId}`)
             .then(() => {
               this.$notify({
                 type: "success",
