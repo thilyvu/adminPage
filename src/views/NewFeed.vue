@@ -169,7 +169,7 @@ export default {
   },
   async mounted() {
     this.loading = true;
-    Api.get("/class", { params: { page: this.page, limit: 10 } })
+    Api.get("/class", { params: { page: this.page, limit: 100 } })
       .then((res) => {
         this.tableData = res.data.data;
         this.loading = false;
@@ -244,7 +244,7 @@ export default {
         ? Api.get("/newFeed", {
             params: {
               page: this.page,
-              limit: 10,
+              limit: 100,
               "content[regex]": this.keyword,
             },
           })
@@ -261,7 +261,7 @@ export default {
                 message: err.toString(),
               });
             })
-        : Api.get("/newFeed", { params: { page: this.page, limit: 10 } })
+        : Api.get("/newFeed", { params: { page: this.page, limit: 100 } })
             .then((res) => {
               this.tableData = res.data.data;
               this.loading = false;
@@ -279,7 +279,7 @@ export default {
     handleSearch(val) {
       this.loading = true;
       Api.get("/newFeed", {
-        params: { page: this.page, limit: 10, "content[regex]": val },
+        params: { page: this.page, limit: 100, "content[regex]": val },
       })
         .then((res) => {
           this.tableData = res.data.data;
@@ -364,7 +364,7 @@ export default {
     },
     handleClose() {
       this.loading = true;
-      Api.get("/newFeed", { params: { page: this.page, limit: 10 } })
+      Api.get("/newFeed", { params: { page: this.page, limit: 100 } })
         .then((res) => {
           this.tableData = res.data.data;
           this.loading = false;

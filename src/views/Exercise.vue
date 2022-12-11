@@ -260,7 +260,7 @@ export default {
   },
   async mounted() {
     this.loading = true;
-    Api.get("/exercise", { params: { page: this.page, limit: 10 } })
+    Api.get("/exercise", { params: { page: this.page, limit: 100 } })
       .then((res) => {
         this.tableData = res.data.data;
         this.loading = false;
@@ -281,7 +281,7 @@ export default {
       this.loading = true;
       this.keyword !== ""
         ? Api.get("/exercise", {
-            params: { page: this.page, limit: 10, "fileName[regex]": val },
+            params: { page: this.page, limit: 100, "fileName[regex]": val },
           })
             .then((res) => {
               this.tableData = res.data.data;
@@ -297,7 +297,7 @@ export default {
               });
             })
         : Api.get("/exercise", {
-            params: { page: this.page, limit: 10 },
+            params: { page: this.page, limit: 100 },
           })
             .then((res) => {
               this.tableData = res.data.data;
@@ -396,7 +396,7 @@ export default {
     },
     handleClose() {
       this.loading = true;
-      Api.get("/exercise", { params: { page: this.page, limit: 10 } })
+      Api.get("/exercise", { params: { page: this.page, limit: 100 } })
         .then((res) => {
           this.tableData = res.data.data;
           this.loading = false;
@@ -423,7 +423,7 @@ export default {
     handleSearch(val) {
       this.loading = true;
       Api.get("/exercise", {
-        params: { page: this.page, limit: 10, "exerciseName[regex]": val },
+        params: { page: this.page, limit: 100, "exerciseName[regex]": val },
       })
         .then((res) => {
           this.tableData = res.data.data;

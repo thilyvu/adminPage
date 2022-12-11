@@ -15,6 +15,7 @@ import FileFolder from "../views/FileFolder.vue";
 import Lecture from "../views/Lecture.vue";
 import NewFeed from "../views/NewFeed.vue";
 import Score from "../views/Score.vue";
+import Test from "../views/Test.vue";
 import User from "../views/User.vue";
 
 import Login from "../views/Login.vue";
@@ -156,6 +157,18 @@ const routes = [
         path: "/Scores",
         name: "Scores",
         components: { default: Score },
+        beforeEnter: (to, from, next) => {
+          if (VueCookies.get("token") !== null) {
+            next();
+          } else {
+            next("/login");
+          }
+        },
+      },
+      {
+        path: "/Tests",
+        name: "Tests",
+        components: { default: Test },
         beforeEnter: (to, from, next) => {
           if (VueCookies.get("token") !== null) {
             next();

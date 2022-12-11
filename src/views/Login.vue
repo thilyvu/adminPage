@@ -93,7 +93,16 @@ export default {
         .then((res) => {
           VueCookies.set("token", res.data.token, "10h");
           VueCookies.set("refreshToken", res.data.refreshToken, "7 days");
-          this.$router.push({ path: "/" });
+          console.log(res);
+          if (res.data && res.data.role && res.data.role === "admin") {
+            this.$router.push({ path: "/" });
+          } else {
+            this.$notify({
+              title: "error",
+              message: "You dont have permission to this site",
+            });
+            this.loading = false;
+          }
 
           this.loading = false;
         })

@@ -176,7 +176,7 @@ export default {
   },
   async mounted() {
     this.loading = true;
-    Api.get("/comment", { params: { page: this.page, limit: 10 } })
+    Api.get("/comment", { params: { page: this.page, limit: 100 } })
       .then((res) => {
         this.tableData = res.data.data;
         this.loading = false;
@@ -251,7 +251,7 @@ export default {
         ? Api.get("/allCalendar", {
             params: {
               page: this.page,
-              limit: 10,
+              limit: 100,
               "name[regex]": this.keyword,
             },
           })
@@ -268,7 +268,7 @@ export default {
                 message: err.toString(),
               });
             })
-        : Api.get("/allCalendar", { params: { page: this.page, limit: 10 } })
+        : Api.get("/allCalendar", { params: { page: this.page, limit: 100 } })
             .then((res) => {
               this.tableData = res.data.data;
               this.loading = false;
@@ -286,7 +286,7 @@ export default {
     handleSearch(val) {
       this.loading = true;
       Api.get("/allCalendar", {
-        params: { page: this.page, limit: 10, "content[regex]": val },
+        params: { page: this.page, limit: 100, "content[regex]": val },
       })
         .then((res) => {
           this.tableData = res.data.data;
@@ -372,7 +372,7 @@ export default {
     },
     handleClose() {
       this.loading = true;
-      Api.get("/allCalendar", { params: { page: this.page, limit: 10 } })
+      Api.get("/allCalendar", { params: { page: this.page, limit: 100 } })
         .then((res) => {
           this.tableData = res.data.data;
           this.loading = false;

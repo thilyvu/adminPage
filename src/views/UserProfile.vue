@@ -34,7 +34,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img :src="this.model.avatar" class="rounded-circle" />
+                    <img style="width :300px; height :200px" :src="this.model.avatar" class="rounded-circle" />
                   </a>
                 </div>
               </div>

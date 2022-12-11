@@ -98,6 +98,13 @@
             path: '/Calendars',
           }"
         />
+        <sidebar-item
+          :link="{
+            name: 'Tests',
+            icon: 'ni ni-app text-purple',
+            path: '/Tests',
+          }"
+        />
         <!-- <sidebar-item
           :link="{
             name: 'Login',

@@ -180,7 +180,7 @@ export default {
   },
   async mounted() {
     this.loading = true;
-    Api.get("/class", { params: { page: this.page, limit: 10 } })
+    Api.get("/class", { params: { page: this.page, limit: 100 } })
       .then((res) => {
         this.tableData = res.data.data;
         this.loading = false;
@@ -253,7 +253,11 @@ export default {
       this.loading = true;
       this.keyword !== ""
         ? Api.get("/lecture", {
-            params: { page: this.page, limit: 10, "name[regex]": this.keyword },
+            params: {
+              page: this.page,
+              limit: 100,
+              "name[regex]": this.keyword,
+            },
           })
             .then((res) => {
               this.tableData = res.data.data;
@@ -268,7 +272,7 @@ export default {
                 message: err.toString(),
               });
             })
-        : Api.get("/lecture", { params: { page: this.page, limit: 10 } })
+        : Api.get("/lecture", { params: { page: this.page, limit: 100 } })
             .then((res) => {
               this.tableData = res.data.data;
               this.loading = false;
@@ -286,7 +290,7 @@ export default {
     handleSearch(val) {
       this.loading = true;
       Api.get("/lecture", {
-        params: { page: this.page, limit: 10, "name[regex]": val },
+        params: { page: this.page, limit: 100, "name[regex]": val },
       })
         .then((res) => {
           this.tableData = res.data.data;
@@ -375,7 +379,7 @@ export default {
     },
     handleClose() {
       this.loading = true;
-      Api.get("/lecture", { params: { page: this.page, limit: 10 } })
+      Api.get("/lecture", { params: { page: this.page, limit: 100 } })
         .then((res) => {
           this.tableData = res.data.data;
           this.loading = false;

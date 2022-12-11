@@ -24,7 +24,7 @@
           <template v-slot:title>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" :src="this.model.avatar" />
+                <img style="width :35px; height :35px" alt="Image placeholder" :src="this.model.avatar" />
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
                 <span class="mb-0 text-sm font-weight-bold">{{
